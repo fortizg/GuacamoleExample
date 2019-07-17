@@ -17,7 +17,7 @@ sudo mkdir -p /etc/guacamole/{extensions,lib}
 sudo chown -R root:root /etc/guacamole
 sudo chmod 0640 /etc/guacamole/user-mapping.xml
 sudo chown root:tomcat /etc/guacamole/user-mapping.xml
-sudo ln -s /etc/guacamole.properties c.guacamole
+sudo ln -s /etc/guacamole/guacamole.properties /var/lib/tomcat9/.guacamole
 
 echo '>>>>Install and configure telnet packages<<<<<'
 sudo apt install -y -q telnetd libtelnet-dev
