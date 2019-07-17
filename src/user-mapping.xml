@@ -1,0 +1,40 @@
+<user-mapping>
+
+  <authorize username="USERNAME" password="PASSWORD">
+    <!--
+    <connection name="Debian2: RDP Connection">
+      <protocol>rdp</protocol>
+      <param name="hostname">localhost</param>
+      <param name="port">3389</param>
+    </connection>
+    -->
+
+    <connection name="Debian2: VNC Connection">
+      <protocol>vnc</protocol>
+      <param name="hostname">localhost</param>
+      <param name="port">5901</param>
+      <param name="password">vagrant</param>
+    </connection>
+
+    <connection name="Debian2: SSH Connection">
+      <protocol>ssh</protocol>
+      <param name="hostname">localhost</param>
+      <param name="port">22</param>
+      <param name="username">vagrant</param>
+    </connection>
+
+    <connection name="Debian1: SSH Connection">
+      <protocol>ssh</protocol>
+      <param name="hostname">192.168.10.5</param>
+      <param name="port">22</param>
+      <param name="username">vagrant</param>
+    </connection>
+
+    <connection name="Debian2: Telnet Connection">
+      <protocol>telnet</protocol>
+      <param name="hostname">localhost</param>
+      <param name="port">23</param>
+      <param name="username">vagrant</param>
+    </connection>
+  </authorize>
+</user-mapping>
