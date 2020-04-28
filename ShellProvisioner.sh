@@ -37,18 +37,19 @@ echo '>>>>Install and configure vnc packages'
 sudo apt install -y -q xfce4 xfce4-goodies gnome-icon-theme tightvncserver libvncserver-dev libpulse-dev
 
 echo '>>>>Install guacamole client and restart tomcat<<<<<'
-curl -s -O -J -L "http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.0.0/binary/guacamole-1.0.0.war"
-sudo cp guacamole-1.0.0.war /var/lib/tomcat9/webapps/guacamole.war
+curl -s -O -J -L "http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.1.0/binary/guacamole-1.1.0.war"
+sudo cp guacamole-1.1.0.war /var/lib/tomcat9/webapps/guacamole.war
 sudo chown tomcat:tomcat /var/lib/tomcat9/webapps/guacamole.war
 sudo systemctl restart tomcat9
 
 echo '>>>>Install guacamole server<<<<<'
-curl -s -O -J -L "http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.0.0/source/guacamole-server-1.0.0.tar.gz"
-tar xzf guacamole-server-1.0.0.tar.gz
-cd guacamole-server-1.0.0/
+curl -s -O -J -L "http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.1.0/source/guacamole-server-1.1.0.tar.gz"
+tar xzf guacamole-server-1.1.0.tar.gz
+cd guacamole-server-1.1.0/
 sudo ./configure --with-init-dir=/etc/init.d
 sudo make
 sudo make install
+
 sudo ldconfig
 sudo update-rc.d guacd defaults
 
@@ -62,6 +63,6 @@ echo '>>>>Start clean-up<<<<<'
 sudo rm /etc/guacamole/Xwrapper.config
 sudo rm /etc/guacamole/server.xml
 sudo rm -fr /tmp/guacamole
-sudo rm -fr /home/vagrant/guacamole-server-1.0.0s
-sudo rm /home/vagrant/guacamole-server-1.0.0.tar.gz
-sudo rm /home/vagrant/guacamole-1.0.0.war
+sudo rm -fr /home/vagrant/guacamole-server-1.1.0s
+sudo rm /home/vagrant/guacamole-server-1.1.0.tar.gz
+sudo rm /home/vagrant/guacamole-1.1.0.war
