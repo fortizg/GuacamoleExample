@@ -23,3 +23,9 @@ $ exit
 # open browser with URL
 $ open http://localhost:55555/guacamole
 ```
+
+
+## Links of interest
+
+* [Using Guacamole](https://guacamole.apache.org/doc/gug/using-guacamole.html)
+* 
