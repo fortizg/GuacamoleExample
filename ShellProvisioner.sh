@@ -1,11 +1,11 @@
 echo '>>>>Install some default packages<<<<<'
-sudo apt update -y -q
-sudo apt install -y -q build-essential htop libcairo2-dev libjpeg62-turbo-dev libjpeg-dev libpng-dev libossp-uuid-dev
+sudo apt-get -qq -y update
+sudo apt-get -qq -y install build-essential htop libcairo2-dev libjpeg62-turbo-dev libjpeg-dev libpng-dev libtool-bin libossp-uuid-dev
 # install optional guacamole packages eq FFmpeg, SSH
-sudo apt install -y -q libavcodec-dev libavutil-dev libswscale-dev libpango1.0-dev libssh2-1-dev libssl-dev libvorbis-dev libwebp-dev
+sudo apt-get -qq -y install libavcodec-dev libavutil-dev libswscale-dev libpango1.0-dev libssh2-1-dev libssl-dev libvorbis-dev libwebp-dev
 
 echo '>>>>Install and configure tomcat packages<<<<<'
-sudo apt install -y -q tomcat9 tomcat9-admin tomcat9-common tomcat9-user
+sudo apt-get -qq -y install tomcat9 tomcat9-admin tomcat9-common tomcat9-user
 sudo mkdir -p /usr/share/tomcat9/.guacamole
 sudo cp /tmp/guacamole/server.xml /etc/tomcat9/server.xml
 sudo chown root:tomcat /etc/tomcat9/server.xml
@@ -20,21 +20,21 @@ sudo chown root:tomcat /etc/guacamole/user-mapping.xml
 sudo ln -s /etc/guacamole/guacamole.properties /var/lib/tomcat9/.guacamole
 
 echo '>>>>Install and configure telnet packages<<<<<'
-sudo apt install -y -q telnetd libtelnet-dev
+sudo apt-get -qq -y install telnetd libtelnet-dev
 
 echo '>>>>Install and configure xrdp packages<<<<<'
-# actualy broken becauce of freerdp2-dev on debian
-# sudo apt install -y -q xrdp freerdp2-dev
-# sudo cp /etc/guacamole/Xwrapper.config /etc/X11/Xwrapper.config
-# sudo chown root:root /etc/X11/Xwrapper.config
-# sudo chmod 0644 /etc/X11/Xwrapper.config
-# sudo systemctl enable xrdp.service
-# sudo systemctl enable xrdp-sesman.service
-# sudo systemctl start xrdp
-# sudo systemctl start xrdp-sesman
+# is it  broken because of freerdp2-dev on debian?!
+sudo apt-get -qq -y install xrdp freerdp2-dev
+sudo cp /etc/guacamole/Xwrapper.config /etc/X11/Xwrapper.config
+sudo chown root:root /etc/X11/Xwrapper.config
+sudo chmod 0644 /etc/X11/Xwrapper.config
+sudo systemctl enable xrdp.service
+sudo systemctl enable xrdp-sesman.service
+sudo systemctl start xrdp
+sudo systemctl start xrdp-sesman
 
 echo '>>>>Install and configure vnc packages'
-sudo apt install -y -q xfce4 xfce4-goodies gnome-icon-theme tightvncserver libvncserver-dev libpulse-dev
+sudo apt-get -qq -y install xfce4 xfce4-goodies gnome-icon-theme tightvncserver libvncserver-dev libpulse-dev
 
 echo '>>>>Install guacamole client and restart tomcat<<<<<'
 curl -s -O -J -L "http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.1.0/binary/guacamole-1.1.0.war"
@@ -63,6 +63,6 @@ echo '>>>>Start clean-up<<<<<'
 sudo rm /etc/guacamole/Xwrapper.config
 sudo rm /etc/guacamole/server.xml
 sudo rm -fr /tmp/guacamole
-sudo rm -fr /home/vagrant/guacamole-server-1.1.0s
+sudo rm -fr /home/vagrant/guacamole-server-1.1.0
 sudo rm /home/vagrant/guacamole-server-1.1.0.tar.gz
 sudo rm /home/vagrant/guacamole-1.1.0.war
